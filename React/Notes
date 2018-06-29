@@ -89,174 +89,174 @@
 																						DOCUMENT
 
 
-																					ROOT ELEMENT <HTML>
+							ROOT ELEMENT <HTML>
 
-																ELEMENT<HEAD>					ELEMENT<BODY>
+		ELEMENT<HEAD>					ELEMENT<BODY>
 
-																ELEMENT<TITLE>			ATTRIBUTE"HREF"	====== ELEMENT<A>		ELEMENT<H1>							
+		ELEMENT<TITLE>			ATTRIBUTE"HREF"	====== ELEMENT<A>		ELEMENT<H1>							
 
-																TEXT "MY TITLE"									TEXT "MY LINK"	TEXT "MY HEADER"
+		TEXT "MY TITLE"									TEXT "MY LINK"	TEXT "MY HEADER"
 
 
 
 
-																ReactDOM.render() is the most common way to render JSX, takes a JSX expr and creates a corresponding tree of DOM nodes 
+		ReactDOM.render() is the most common way to render JSX, takes a JSX expr and creates a corresponding tree of DOM nodes 
 
 
-												
-														- First parameter is the expression that needs to be the expression that needs to be rendered <h1>Render me! </h1> 
-														- First argument is appended to whatever element is selected by the second argument 			
 
+- First parameter is the expression that needs to be the expression that needs to be rendered <h1>Render me! </h1> 
+- First argument is appended to whatever element is selected by the second argument 			
 
-														- First element could also be a variable, e.g{
 
-															const myHeader = (
-															<ol>
-															<li>Learn Deez nuts</li> 
-															<li>Become a dev</li>
+- First element could also be a variable, e.g{
 
-															</ol>
-															);
+	const myHeader = (
+	<ol>
+	<li>Learn Deez nuts</li> 
+	<li>Become a dev</li>
 
-															ReactDOM.render(myHeader, document.getElementById('app'));
+	</ol>
+	);
 
+	ReactDOM.render(myHeader, document.getElementById('app'));
 
-														}
 
+}
 
-													The Virtual DOM:
-													-If you render the same thing twice in a row, it won't do anything
-													- Issue ==> Web browsers have too many DOMs to 	
 
+The Virtual DOM:
+-If you render the same thing twice in a row, it won't do anything
+- Issue ==> Web browsers have too many DOMs to 	
 
 
-													<script type="text/jsx">
 
-														React.render(<h1>Hello World</h1>, document.getElementById('myDiv'));
+<script type="text/jsx">
 
+React.render(<h1>Hello World</h1>, document.getElementById('myDiv'));
 
 
-													</script>
 
-														myDiv ==> Container
+</script>
 
-														JSX ==> Javascript XML syntax transform 
+myDiv ==> Container
 
+JSX ==> Javascript XML syntax transform 
 
 
-														*****************************************
 
-														Creating a Class:
+*****************************************
 
+Creating a Class:
 
-														var MyComponent = React.createClass(
 
-																{
-																	render: function(){ return(<h1>Hello World</h1>)}
+var MyComponent = React.createClass(
 
-																}
-														);
+		{
+			render: function(){ return(<h1>Hello World</h1>)}
 
-																*****************************
-																To render:
+		}
+);
 
-																	React.render(<MyComponent/>, dpcument.getElementById('myDiv'));
+		*****************************
+		To render:
 
+			React.render(<MyComponent/>, dpcument.getElementById('myDiv'));
 
-																	**************************************
 
-																	Props:
+			**************************************
 
-																	var MyComponent = React.createClass(
-																				{
-																					render: function()
-																						{
+			Props:
 
-																							rteurn(<h1>Hello {this.props.name}!</h1>); 	
+			var MyComponent = React.createClass(
+						{
+							render: function()
+								{
 
-																						}
+									rteurn(<h1>Hello {this.props.name}!</h1>); 	
 
+								}
 
 
-																				}
-																	);
 
+						}
+			);
 
 
-													*******************************************************************************
 
-													Specs, Lifecycle & State:
-													- The render method is the only req'd spec for creating a component
+*******************************************************************************
 
-													Lifecycle method:
-													- componentWillMount : Invoked once, on both client & server before rendering occurs.
-													- componentDidMount : Invoked once, only on the client, after rendering occurs
-													- shouldComponentUpdate : Return value determines whether component should update
-													- componentWillUnmount: Invoked prior to unmounting component
+	Specs, Lifecycle & State:
+	- The render method is the only req'd spec for creating a component
 
-													*********************************************************************************
+	Lifecycle method:
+	- componentWillMount : Invoked once, on both client & server before rendering occurs.
+	- componentDidMount : Invoked once, only on the client, after rendering occurs
+	- shouldComponentUpdate : Return value determines whether component should update
+	- componentWillUnmount: Invoked prior to unmounting component
 
-													Specs:
-													- getInitialState: Return value is the initial value for the state
-													- getDefaultProps: Sets fallback props values if props aren't supplied
-													- mixins: Array of objects user to extend the current component's functionality
+	*********************************************************************************
 
+	Specs:
+	- getInitialState: Return value is the initial value for the state
+	- getDefaultProps: Sets fallback props values if props aren't supplied
+	- mixins: Array of objects user to extend the current component's functionality
 
-													***********************************************************************************
-														/************* Every Component has a state object and a props object*******************/
-													State:
 
-													- Object's state is set using the setState method ==> Triggers UI updates and is the bread and butter of React's interacitivity 
-													- getInitialState method displays the initial state before any interaction occurs 	
+	***********************************************************************************
+		/************* Every Component has a state object and a props object*******************/
+	State:
 
+	- Object's state is set using the setState method ==> Triggers UI updates and is the bread and butter of React's interacitivity 
+	- getInitialState method displays the initial state before any interaction occurs 	
 
 
-														var MyComponent = React.createClass(
 
-																	{
-																		getInitialState: function(){ return{ count: 5 } },
+		var MyComponent = React.createClass(
 
-																		render: function()
-																		{
-																			return ( <h1>{ this.state.count}</h1>)
-																		}
+					{
+						getInitialState: function(){ return{ count: 5 } },
 
-																	}
-														);
+						render: function()
+						{
+							return ( <h1>{ this.state.count}</h1>)
+						}
 
+					}
+		);
 
 
-														**************************************************************************************
 
-														Events:
+		**************************************************************************************
 
-															- Render has a built in cross browser events system. The events are attahed as properties of components and can trigger methods.
-															- e.g creating a count increment using events
+		Events:
 
+			- Render has a built in cross browser events system. The events are attahed as properties of components and can trigger methods.
+			- e.g creating a count increment using events
 
-															var Counter = React.createClass(
 
-																	{
-																		incrementCount : function()
-																		{
-																			this.setState({this.state.count+1});
-																		},
-																			getInitialState: function()
-																			{
-																				return { count: 0}
+			var Counter = React.createClass(
 
-																			},
+					{
+						incrementCount : function()
+						{
+							this.setState({this.state.count+1});
+						},
+							getInitialState: function()
+							{
+								return { count: 0}
 
-																		render: function()
-																		{
-																			return( <div class="my-component"> <h1>Count : { this.state.count} </h1> 
-																				<button type="button" onClick={this.incrementCount}>Increment</button>
-																				</div>
-																			);
-																		}
+							},
 
-																	}
-															);
+						render: function()
+						{
+							return( <div class="my-component"> <h1>Count : { this.state.count} </h1> 
+								<button type="button" onClick={this.incrementCount}>Increment</button>
+								</div>
+							);
+						}
+
+					}
+			);
 
 
 							***************************************************************************************************************************
@@ -313,351 +313,351 @@
 						    width={sideLength} />
 						);
 
-						const pics = {
-							  panda: "http://bit.ly/1Tqltv5",
-							  owl: "http://bit.ly/1XGtkM3",
-							  owlCat: "http://bit.ly/1Upbczi"
-						};
-							const panda = (
+const pics = {
+	  panda: "http://bit.ly/1Tqltv5",
+	  owl: "http://bit.ly/1XGtkM3",
+	  owlCat: "http://bit.ly/1Upbczi"
+};
+	const panda = (
 
-									<img
-										src={pics.panda}
-										alt="Lazy Panda" />
-							);
-							const owl = (
+			<img
+				src={pics.panda}
+				alt="Lazy Panda" />
+	);
+	const owl = (
 
-								<img
-									src={pics.owl}
-									alt="Lazy Owl" />
-							);
-							const owlCat = (
-									<img
-										src=pics.owlCat
-										alt="Lazy owlCat"
-									/>
-							);
+		<img
+			src={pics.owl}
+			alt="Lazy Owl" />
+	);
+	const owlCat = (
+			<img
+				src=pics.owlCat
+				alt="Lazy owlCat"
+			/>
+	);
 
 
 
-							*********************************************************
-							Event Listeners:
+	*********************************************************
+	Event Listeners:
 
-							e.g <img onClick={myFunc />
-							- Event listener's name should be something that starts with on such as onCLick, onMouseOver
-								
+	e.g <img onClick={myFunc />
+	- Event listener's name should be something that starts with on such as onCLick, onMouseOver
 
-							/******* Event website ********\
-							https://reactjs.org/docs/events.html#clipboard-events
 
-							e.g:
+	/******* Event website ********\
+	https://reactjs.org/docs/events.html#clipboard-events
 
-							function myFunc()
+	e.g:
+
+	function myFunc()
+	{
+		alert('OVO crew nigga');
+	}
+		<img = onClick={nyFunc} />
+
+
+	****************************************************************************
+
+	If statements:
+	(
+
+
+			{
+				if(purchase.complete)
+				{
+						<h1> 'Thank you for the purchase!'	</h1>
+				}
+
+			}	
+	)
+
+	import React from 'react';
+	import ReactDOM from 'react-dom';
+
+		function coinToss() {
+		  // This function will randomly return either 'heads' or 'tails'.
+		  return Math.random() < 0.5 ? 'heads' : 'tails';
+		}
+
+			const pics = {
+			  kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
+			  doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
+			};
+				let img;
+
+				// if/else statement begins here:
+				if (coinToss() === 'heads') {
+				  img = (
+				    <img src={pics.kitty} />
+				  );
+				} else {
+				  img = ( 
+				    <img src={pics.doggy} />
+				  );
+				}
+
+				ReactDOM.render(img, document.getElementById('app'));	
+
+
+				Ternary Operator:
+				- More compact way to check for conditions
+
+					const headline = (
+
+							<h1>
+								{ age >= drinkingAge ? 'Welcome to the bar' : 'GTFOH' }
+
+							</h1>
+					);
+
+					&& operator
+
+					<ul>
+					{ x > 5 && <li>Food</li> }
+					</ul>
+
+
+				********************************************************************************
+
+				.map in JSX
+				- Array method .map()
+				- Used to create a list of items
+
+				e.g ==> const strings = ['Home','Shop','About Me'];
+
+						const listItems = string.map(string => <li>{string}</li>);
+						<ul>{listItems}</ul>
+
+						.map() returns a new array of <li>s 
+
+						*****************************************
+
+
+				Keys:
+
+				- A key is an attribute, similar to an id atribute
+				- Keeps track of list
+				- Properties:
+				1. The list-items have memory from one render to the next. For instance, when a to-do list renders, 
+				each item must "remember" whether it was checked off. The items shouldn't get amnesia when they render.
+				2. A list's order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+
+
+				How to generate a list with unique keys:
+				import React from 'react';
+				import ReactDOM from 'react-dom';
+
+				const people = ['Rowe', 'Prevost', 'Gare'];
+
+				const peopleLis = people.map((person,i) =>
+				  // expression goes here
+						<li key={'person_' + i}> {person}</li>
+				);
+
+				// ReactDOM.render goes here:
+				ReactDOM.render(<ul>{peopleLis}</ul>, document.getElementById('app'));
+
+
+				******************************************************
+
+				Components:
+				- A component is a small, reusable chunk of code that's responsible for rendering some HTML
+
+				import React from 'react';
+				import ReactDOM from 'react-dom';
+
+				class MyComponentClass extends React.Component {
+				  render() {
+				    return <h1>Hello world</h1>;
+				  }
+				};
+
+				ReactDOM.render(
+				  <MyComponentClass />,
+				  document.getElementById('app')
+				);
+
+				- Line 1 React is a new variable
+				- JS object
+				- Imported object has methods such as React.createElement()
+
+
+				Importing ReactDOM:
+				- import ReactDOM from 'react-dom';
+				- 'react-dom are meant for interacting with the DOM
+
+				Creating a component class:
+				- Having a component class will produce as many components as possible 
+				- To create a component classs ==> use a base class called React.Component
+
+				Ract.Component is a JS class used to create own component class
+				e.g: 
+						class myComponent extends React.Component{}
+
+
+						render(){} ==> method
+
+				To create a React component:
+					<MyComponentClass /> ==> Component class instance 
+
+
+					Variable attributes in a component:
+
+					const redPanda = {
+					  src:  'https://upload.wikimedia.org/wikipedia/commons/b/b2/Endangered_Red_Panda.jpg',
+					  alt: 'Red Panda',
+					  width:  '200px
+					};
+
+
+					<img 
+							src={owl}
+
+
+
+					/>
+
+
+					Conditional statemments inside renders:
+
+						render()
+						{
+							let task;
+							if(!apocalypse)
 							{
-								alert('OVO crew nigga');
+								task = 'learn React.js'
+
 							}
-								<img = onClick={nyFunc} />
-
-
-							****************************************************************************
-
-							If statements:
-							(
-
-							 
-									{
-										if(purchase.complete)
-										{
-												<h1> 'Thank you for the purchase!'	</h1>
-										}
-
-									}	
-							)
-
-							import React from 'react';
-							import ReactDOM from 'react-dom';
-
-								function coinToss() {
-								  // This function will randomly return either 'heads' or 'tails'.
-								  return Math.random() < 0.5 ? 'heads' : 'tails';
+								else
+								{
+									task = 'run around'
 								}
+									return <h1> Today I'm going to {task} </h1>
+
 
-									const pics = {
-									  kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
-									  doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
-									};
-										let img;
+						}
 
-										// if/else statement begins here:
-										if (coinToss() === 'heads') {
-										  img = (
-										    <img src={pics.kitty} />
-										  );
-										} else {
-										  img = ( 
-										    <img src={pics.doggy} />
-										  );
-										}
+						getter functions:
+
+						get Name()
+						{
+							return 'Amer'
+						}
+							return <h1>{this.Name}</h1>
+
+							render()
+							{
+								return (
+									<div onHover={myFunc}> </div>
 
-										ReactDOM.render(img, document.getElementById('app'));	
+								)
 
 
-										Ternary Operator:
-										- More compact way to check for conditions
+							}
 
-											const headline = (
+						Props:
+						-To pass a prop to another function: 
+						- use the term "export" e.g ==> [export class Greeting extends...]
+						- import {Greeting} from './Greeting'
+						- {Greeting ==> NAme of class}
+						- <Greeting name="Amer" />
+						- Passing a prop from a component to a different one
 
-													<h1>
-														{ age >= drinkingAge ? 'Welcome to the bar' : 'GTFOH' }
 
-													</h1>
-											);
+						import React from 'react';
 
-											&& operator
+						export class Welcome extends React.Component {
+						  render() {
+						    if (this.props.name == 'Wolfgang Amadeus Mozart') {
+						      return (
+							<h2>
+							  hello sir it is truly great to meet you here on the web
+							</h2>
+						      );
+						    } else {
+						      return (
+							<h2>
+							  WELCOME "2" MY WEB SITE BABYYY!!!!!
+							</h2>
+						      );
+						    }
+						  }
+						}
+						*****************************************
+						In Home.js:
 
-											<ul>
-											{ x > 5 && <li>Food</li> }
-											</ul>
+						import {Welcome} from './Welcome'
 
+						class Home extends React.Component
+						{
+							Render()
+							{
+								return <Welcome name="Ludwig van Beethoven" />;
+							}
+						}
 
-										********************************************************************************
+						ReactionDOM.render
+						{
+							<Home />,
+						}
+							Pass props vals in the component class 
+							e.g ==> <myClass name="Amer" value="true"
 
-										.map in JSX
-										- Array method .map()
-										- Used to create a list of items
 
-										e.g ==> const strings = ['Home','Shop','About Me'];
 
-												const listItems = string.map(string => <li>{string}</li>);
-												<ul>{listItems}</ul>
+					import React from 'react';
+					import ReactDOM from 'react-dom';
+					import { Button } from './Button';
 
-												.map() returns a new array of <li>s 
+					class Talker extends React.Component {
+					  talk() {
+					    let speech = '';
+					    for (let i = 0; i < 10000; i++) {
+					      speech += 'blah ';
+					    }
+					    alert(speech);
+					  }
 
-												*****************************************
+					  render() {
+					    return <Button talk={this.talk} />;
+					  }
+					}
 
+					ReactDOM.render(
+					  <Talker />,
+					  document.getElementById('app')
+					);		
 
-										Keys:
 
-										- A key is an attribute, similar to an id atribute
-										- Keeps track of list
-										- Properties:
-										1. The list-items have memory from one render to the next. For instance, when a to-do list renders, 
-										each item must "remember" whether it was checked off. The items shouldn't get amnesia when they render.
-										2. A list's order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+					handleEvent, onEvent, and this.props.onEvent
 
 
-										How to generate a list with unique keys:
-										import React from 'react';
-										import ReactDOM from 'react-dom';
+					Define a function in a class:
 
-										const people = ['Rowe', 'Prevost', 'Gare'];
+					class Talker extends React.Component {
+					  talk() {
+					    let speech = '';
+					    for (let i = 0; i < 10000; i++) {
+					      speech += 'blah ';
+					    }
+					    alert(speech);
+					  }
 
-										const peopleLis = people.map((person,i) =>
-										  // expression goes here
-												<li key={'person_' + i}> {person}</li>
-										);
+					  // talk() is a function in Talker 
 
-										// ReactDOM.render goes here:
-										ReactDOM.render(<ul>{peopleLis}</ul>, document.getElementById('app'));
+					  Handlers:
+					  - Create simple ones w conventional names such as handleHover() 
 
 
-										******************************************************
+					  this.props.children:
+					  - Every component's props object has a property named children 
+					  - Will return everything in between the JSX tags 
 
-										Components:
-										- A component is a small, reusable chunk of code that's responsible for rendering some HTML
+	******************************************************************************************************
 
-										import React from 'react';
-										import ReactDOM from 'react-dom';
-
-										class MyComponentClass extends React.Component {
-										  render() {
-										    return <h1>Hello world</h1>;
-										  }
-										};
-
-										ReactDOM.render(
-										  <MyComponentClass />,
-										  document.getElementById('app')
-										);
-
-										- Line 1 React is a new variable
-										- JS object
-										- Imported object has methods such as React.createElement()
-
-
-										Importing ReactDOM:
-										- import ReactDOM from 'react-dom';
-										- 'react-dom are meant for interacting with the DOM
-
-										Creating a component class:
-										- Having a component class will produce as many components as possible 
-										- To create a component classs ==> use a base class called React.Component
-
-										Ract.Component is a JS class used to create own component class
-										e.g: 
-												class myComponent extends React.Component{}
-
-
-												render(){} ==> method
-
-										To create a React component:
-											<MyComponentClass /> ==> Component class instance 
-
-
-											Variable attributes in a component:
-
-											const redPanda = {
-											  src:  'https://upload.wikimedia.org/wikipedia/commons/b/b2/Endangered_Red_Panda.jpg',
-											  alt: 'Red Panda',
-											  width:  '200px
-											};
-
-
-											<img 
-													src={owl}
-
-
-
-											/>
-
-
-											Conditional statemments inside renders:
-
-												render()
-												{
-													let task;
-													if(!apocalypse)
-													{
-														task = 'learn React.js'
-
-													}
-														else
-														{
-															task = 'run around'
-														}
-															return <h1> Today I'm going to {task} </h1>
-
-
-												}
-
-												getter functions:
-
-												get Name()
-												{
-													return 'Amer'
-												}
-													return <h1>{this.Name}</h1>
-
-													render()
-													{
-														return (
-															<div onHover={myFunc}> </div>
-
-														)
-
-
-													}
-
-											Props:
-											-To pass a prop to another function: 
-											- use the term "export" e.g ==> [export class Greeting extends...]
-											- import {Greeting} from './Greeting'
-											- {Greeting ==> NAme of class}
-											- <Greeting name="Amer" />
-											- Passing a prop from a component to a different one
-
-
-											import React from 'react';
-
-											export class Welcome extends React.Component {
-											  render() {
-											    if (this.props.name == 'Wolfgang Amadeus Mozart') {
-											      return (
-											      	<h2>
-											      	  hello sir it is truly great to meet you here on the web
-											      	</h2>
-											      );
-											    } else {
-											      return (
-											      	<h2>
-											      	  WELCOME "2" MY WEB SITE BABYYY!!!!!
-											      	</h2>
-											      );
-											    }
-											  }
-											}
-											*****************************************
-											In Home.js:
-
-											import {Welcome} from './Welcome'
-
-											class Home extends React.Component
-											{
-												Render()
-												{
-													return <Welcome name="Ludwig van Beethoven" />;
-												}
-											}
-
-											ReactionDOM.render
-											{
-												<Home />,
-											}
-												Pass props vals in the component class 
-												e.g ==> <myClass name="Amer" value="true"
-
-
-
-										import React from 'react';
-										import ReactDOM from 'react-dom';
-										import { Button } from './Button';
-
-										class Talker extends React.Component {
-										  talk() {
-										    let speech = '';
-										    for (let i = 0; i < 10000; i++) {
-										      speech += 'blah ';
-										    }
-										    alert(speech);
-										  }
-										  
-										  render() {
-										    return <Button talk={this.talk} />;
-										  }
-										}
-
-										ReactDOM.render(
-										  <Talker />,
-										  document.getElementById('app')
-										);		
-
-
-										handleEvent, onEvent, and this.props.onEvent
-
-
-										Define a function in a class:
-
-										class Talker extends React.Component {
-										  talk() {
-										    let speech = '';
-										    for (let i = 0; i < 10000; i++) {
-										      speech += 'blah ';
-										    }
-										    alert(speech);
-										  }
-
-										  // talk() is a function in Talker 
-
-										  Handlers:
-										  - Create simple ones w conventional names such as handleHover() 
-
-
-										  this.props.children:
-										  - Every component's props object has a property named children 
-										  - Will return everything in between the JSX tags 
-
-							******************************************************************************************************
-							
-							this.state			  
+		this.state			  
 							- React Components will often need dynamic info to render 
 							- e.g the score of a basketball game 
 							- Two ways to get dynamic info: props and state 
@@ -986,840 +986,840 @@
 								}
 
 , acto
-								function todos(state = [], action)
+			function todos(state = [], action)
+			{
+				switch(action.type)
+				{ 
+					case ADD_TODO:
+					return [.... state, todo(undefined, action)]
+					default:
+						returm state
+				}
+			}
+			const todoApp = combineReducers(todos)
+
+
+
+			Store:
+			The store is a place that holds the app's state. It is very easy 
+			to create a store once you have reducers. We are passing store 
+			property to the provider element, which wraps our route component.
+
+			e.g main.js:
+
+			import React from 'react'
+
+			import {render} from 'react-dom'
+			import {createStore} from 'redux'
+			import {provdior} from 'react-redux'
+
+			import App from './App.jsx'
+			import todoApp from '/redux'                                                                                                                                                                                                    
+
+			let store = createstore(todoApp)
+			let rootElement = document.getElementById('app')
+
+			render(
+
+					<Provider store={store}>
+					<APP />
+					</Provider>
+
+
+			)
+
+				Root Component:
+				- The App component is the root component of the app
+				- connect function is used to connect our root component app to the store
+
+				Aoo.jd:
+
+				import React, { Component } from 'react'
+				import { connect } from 'react-redux'
+				import { addTodo } from './actions/actions'
+
+				import AddTodo from './components/AddTodo.js'
+				import TodoList from './components/TodoList.js'
+
+				class App extends Component {
+				   render() {
+				      const { dispatch, visibleTodos } = this.props
+
+				      return (
+					 <div>
+					    <AddTodo onAddClick = {text ⇒dispatch(addTodo(text))} />
+					    <TodoList todos = {visibleTodos}/>
+					 </div>
+				      )
+				   }
+				}
+				function select(state) {
+				   return {
+				      visibleTodos: state.todos
+				   }
+				}
+				export default connect(select)(App);
+
+				*******************************************
+				Animations:
+
+				e.g:
+
+				import React from 'react';
+				var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
+				class App extends React.Component
+				{
+
+					render()
+					{
+						return(
+
+							<div>
+								<ReactCSSTransitionGroup transitionName = "example"
+								transitionAppear = {true} transitionAppearTimeout = {500}
+								transitionEnter = {false} transitionLeave = {false} >
+
+								<h1>My Element...</h1>
+								</ReactCSSTransitionGroup>
+								</div>
+
+						);
+					}
+
+
+
+				}
+
+				*****************************************************************************
+
+
+
+				import React from 'react';
+				var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
+				class App extends React.Component {
+				   constructor(props) {
+				      super(props);
+
+				      this.state = {
+					 items: ['Item 1...', 'Item 2...', 'Item 3...', 'Item 4...']
+				      }
+				      this.handleAdd = this.handleAdd.bind(this);
+				   };
+				   handleAdd() {
+				      var newItems = this.state.items.concat([prompt('Create New Item')]);
+				      this.setState({items: newItems});
+				   }
+				   handleRemove(i) {
+				      var newItems = this.state.items.slice();
+				      newItems.splice(i, 1);
+				      this.setState({items: newItems});
+				   }
+				   render() {
+				      var items = this.state.items.map(function(item, i) {
+					 return (
+					    <div key = {item} onClick = {this.handleRemove.bind(this, i)}>
+					       {item}
+					    </div>
+					 );
+				      }.bind(this));
+
+				      return (
+					 <div>      
+					    <button onClick = {this.handleAdd}>Add Item</button>
+
+					    <ReactCSSTransitionGroup transitionName = "example" 
+					       transitionEnterTimeout = {500} transitionLeaveTimeout = {500}>
+					       {items}
+					    </ReactCSSTransitionGroup>
+					 </div>
+				      );
+				   }
+				}
+				export default App;
+
+
+
+				******************************************
+
+				Keep calling the class methods all the way
+				e.g this.state.items.concat 
+
+					state ==> items array 
+					- For data thats going to change we need 
+					- props ==> properties (Short for that)
+					props ==>gets passed to the component(like a function parameter)
+					state ==> Managed within the component (Similar to local variables in functions)
+
+
+					Difference between Class & Functions:
+
+					function Welcome(props)
+					{
+						return <h1>Hello, {props.name}</h1>;
+					}
+
+					class Welcome extends React.Component
+					{
+						render()
+						{
+							return <h1>Hello, {this.props.name}</h1>;
+						}
+					}
+
+					Rendering an element:
+						const element = <div />;
+
+						const element = <Welcome name="Sara" />;
+
+						ReactDOM.render(
+							element,document.getElementById('root')
+						);
+
+
+					**************************************************************
+
+						This function will print out all the names 
+						function Welcome(props) {
+						  return <h1>Hello, {props.name}</h1>;
+						}
+
+						function App() {
+						  return (
+						    <div>
+						      <Welcome name="Sara" />
+						      <Welcome name="Cahal" />
+						      <Welcome name="Edite" />
+						    </div>
+						  );
+						}
+
+						ReactDOM.render(<App />, document.getElementById('root'));
+
+						To concat an item to a list:
+							var newItems = this.state.items.concat([prompt('Create New Item')]);
+							this.setState(items,newItems);
+
+						To delete an object:
+
+							handleRemove(i)
+							{
+								var newItems = this.state.items.slice();
+								newItems.splice(i,1);
+								this.setState(items: newItems);
+							}
+
+			****************************************************************************************
+							Some General Syntax:
+
+							// arrays
+							const numbers = [1,2,3,4,5];
+							const listItems = numbers.map((number) => <li>{number}</li>)
+
+							Keys:
+
+							const numbers = [1,2,3,4,5];
+
+							const listItems = numbers.map((number) => <lii key={number.toString()}> {number} </li>);
+
+							The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. 
+							Most often you would use IDs from your data as keys:	
+
+
+								const todoItems = todo.map((todo) => <li key={todo.Id}> {todo.text} </li>);
+
+
+
+							function formatDate(date)	
+							{
+								return date.toLocalDateString();
+							}
+
+							function Comment(props)	
+							{
+								return(
+
+									<div className="Comment">
+										<div className="UserInfo">
+											<img
+												className="Avatar"
+													src={props.author.avatarurl}
+													alt={props.author.name}
+											/>
+											<div className="Comment-text">
+												{props.author.name}	
+											</div>
+										</div>
+										<div className="Comment-text">
+									{props.text}</div>
+										<div className="Comment-date">
+										{formatDate(props.date)}
+										</div>
+									</div>	
+
+								);
+							}
+
+								const comment = {
+									date: new Date(),
+									text:'whatever you want',
+									author: {name: 'Amer',
+											avatarUrl:
+												'website'
+												},
+												},
+
+									ReactDOM.render(
+
+										<Comment
+											date={comment.date}
+											text={comment.text}
+											author={comment.author}
+										/>
+
+
+									)			
+
+
+
+								}
+
+								<div id="app"> </div>
+
+								class TunnelConfig extends React.component
 								{
-									switch(action.type)
-									{ 
-										case ADD_TODO:
-										return [.... state, todo(undefined, action)]
-										default:
-											returm state
+									constructor(props)
+									{	
+										super(props);
+										let Name = "";
+										let userName = "";
+										let PointofPresence = 0;
+										let PointofEntry = 0;
+										const Nodes = [];
+
 									}
 								}
-								const todoApp = combineReducers(todos)
-
-
-
-								Store:
-								The store is a place that holds the app's state. It is very easy 
-								to create a store once you have reducers. We are passing store 
-								property to the provider element, which wraps our route component.
-
-								e.g main.js:
-
-								import React from 'react'
-
-								import {render} from 'react-dom'
-								import {createStore} from 'redux'
-								import {provdior} from 'react-redux'
-
-								import App from './App.jsx'
-								import todoApp from '/redux'                                                                                                                                                                                                    
-
-								let store = createstore(todoApp)
-								let rootElement = document.getElementById('app')
-
-								render(
-
-										<Provider store={store}>
-										<APP />
-										</Provider>
-
-
-								)
-
-									Root Component:
-									- The App component is the root component of the app
-									- connect function is used to connect our root component app to the store
-
-									Aoo.jd:
-
-									import React, { Component } from 'react'
-									import { connect } from 'react-redux'
-									import { addTodo } from './actions/actions'
-
-									import AddTodo from './components/AddTodo.js'
-									import TodoList from './components/TodoList.js'
-
-									class App extends Component {
-									   render() {
-									      const { dispatch, visibleTodos } = this.props
-									      
-									      return (
-									         <div>
-									            <AddTodo onAddClick = {text ⇒dispatch(addTodo(text))} />
-									            <TodoList todos = {visibleTodos}/>
-									         </div>
-									      )
-									   }
-									}
-									function select(state) {
-									   return {
-									      visibleTodos: state.todos
-									   }
-									}
-									export default connect(select)(App);
-
-									*******************************************
-									Animations:
-
-									e.g:
-
-									import React from 'react';
-									var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
-									class App extends React.Component
+								class NodeConfig extends React.component
+								{
+									constructor(props)
 									{
+										super(props);
+										let cloudProvider = "";
+										let Region = "";
+										let ImageName = "";
+										let PublicIP = "";
+										let PrivateIP = "";
 
-										render()
-										{
-											return(
+
+									}
+								}
+
+
+								function Config(props) {
+								  return <h1>Your tunnel name is {props.name} <br />
+								    UserName {props.userName}.<br />
+								   Point of Presence {props.pointofPresence} <br />
+								    Pont of Entry {props.pointofEntry}</h1>;
+								}
+
+
+								function App() {
+								  return (
+								    <div>
+								      <Config name=" " 
+									  userName=" "
+									  pointofPresence=" "
+									  pontofEntry=" "
+									  />
+
+								    </div>
+								  );
+								}
+
+								ReactDOM.render(<App />, document.getElementById('app'));
+
+
+
+							function NetConfig(props)	
+							{
+								 return <h1>Cloud Provider {props.cloudProvider} <br />
+								    Region {props.region}.<br />
+								   Image Name {props.imageName} <br />
+								    Pulic IP {props.publicIp}</h1>;
+								    Private IP {props.privateIp}
+							}
+
+							function App() {
+								  return (
+								    <div>
+								      <NetConfig cloudProvider=" " 
+									  region=" "
+									  p=" "
+									  pontofEntry=" "
+									  />
+
+								    </div>
+								  );
+								}
+
+
+
+
+
+
+								Component is essentially a class
+								Class is a rendered function
+
+
+								Class ----- extends React.Component
+								{
+									constructor(props)
+									{
+										super(props);
+										this.state = { dtae: new Date()};
+									}
+									render()
+									{
+										return (
 
 												<div>
-													<ReactCSSTransitionGroup transitionName = "example"
-													transitionAppear = {true} transitionAppearTimeout = {500}
-													transitionEnter = {false} transitionLeave = {false} >
-
-													<h1>My Element...</h1>
-													</ReactCSSTransitionGroup>
-													</div>
-
-											);
-										}
+													<h1> Hello </h1>
+													<h2> It's {this.state.date.tolocaleTimeString()} </h2>
+												</div>	
 
 
-
+										)
 									}
+								}
 
-									*****************************************************************************
-
-
-
-									import React from 'react';
-									var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
-									class App extends React.Component {
-									   constructor(props) {
-									      super(props);
-											
-									      this.state = {
-									         items: ['Item 1...', 'Item 2...', 'Item 3...', 'Item 4...']
-									      }
-									      this.handleAdd = this.handleAdd.bind(this);
-									   };
-									   handleAdd() {
-									      var newItems = this.state.items.concat([prompt('Create New Item')]);
-									      this.setState({items: newItems});
-									   }
-									   handleRemove(i) {
-									      var newItems = this.state.items.slice();
-									      newItems.splice(i, 1);
-									      this.setState({items: newItems});
-									   }
-									   render() {
-									      var items = this.state.items.map(function(item, i) {
-									         return (
-									            <div key = {item} onClick = {this.handleRemove.bind(this, i)}>
-									               {item}
-									            </div>
-									         );
-									      }.bind(this));
-									      
-									      return (
-									         <div>      
-									            <button onClick = {this.handleAdd}>Add Item</button>
-													
-									            <ReactCSSTransitionGroup transitionName = "example" 
-									               transitionEnterTimeout = {500} transitionLeaveTimeout = {500}>
-									               {items}
-									            </ReactCSSTransitionGroup>
-									         </div>
-									      );
-									   }
-									}
-									export default App;
-
-
-
-									******************************************
-
-									Keep calling the class methods all the way
-									e.g this.state.items.concat 
-
-										state ==> items array 
-										- For data thats going to change we need 
-										- props ==> properties (Short for that)
-										props ==>gets passed to the component(like a function parameter)
-										state ==> Managed within the component (Similar to local variables in functions)
-
-
-										Difference between Class & Functions:
-
-										function Welcome(props)
-										{
-											return <h1>Hello, {props.name}</h1>;
-										}
-
-										class Welcome extends React.Component
-										{
-											render()
-											{
-												return <h1>Hello, {this.props.name}</h1>;
-											}
-										}
-
-										Rendering an element:
-											const element = <div />;
-
-											const element = <Welcome name="Sara" />;
-
-											ReactDOM.render(
-												element,document.getElementById('root')
-											);
-
-
-										**************************************************************
-
-											This function will print out all the names 
-											function Welcome(props) {
-											  return <h1>Hello, {props.name}</h1>;
-											}
-
-											function App() {
-											  return (
-											    <div>
-											      <Welcome name="Sara" />
-											      <Welcome name="Cahal" />
-											      <Welcome name="Edite" />
-											    </div>
-											  );
-											}
+								Constructor:
 
-											ReactDOM.render(<App />, document.getElementById('root'));
-
-											To concat an item to a list:
-												var newItems = this.state.items.concat([prompt('Create New Item')]);
-												this.setState(items,newItems);
-
-											To delete an object:
-												
-												handleRemove(i)
-												{
-													var newItems = this.state.items.slice();
-													newItems.splice(i,1);
-													this.setState(items: newItems);
-												}
-
-								****************************************************************************************
-												Some General Syntax:
-
-												// arrays
-												const numbers = [1,2,3,4,5];
-												const listItems = numbers.map((number) => <li>{number}</li>)
-
-												Keys:
-
-												const numbers = [1,2,3,4,5];
-
-												const listItems = numbers.map((number) => <lii key={number.toString()}> {number} </li>);
-
-												The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. 
-												Most often you would use IDs from your data as keys:	
-
-
-													const todoItems = todo.map((todo) => <li key={todo.Id}> {todo.text} </li>);
-
-
-
-												function formatDate(date)	
-												{
-													return date.toLocalDateString();
-												}
-
-												function Comment(props)	
-												{
-													return(
-
-														<div className="Comment">
-															<div className="UserInfo">
-																<img
-																	className="Avatar"
-																		src={props.author.avatarurl}
-																		alt={props.author.name}
-																/>
-																<div className="Comment-text">
-																	{props.author.name}	
-																</div>
-															</div>
-															<div className="Comment-text">
-														{props.text}</div>
-															<div className="Comment-date">
-															{formatDate(props.date)}
-															</div>
-														</div>	
-
-													);
-												}
-
-													const comment = {
-														date: new Date(),
-														text:'whatever you want',
-														author: {name: 'Amer',
-																avatarUrl:
-																	'website'
-																	},
-																	},
-
-														ReactDOM.render(
-
-															<Comment
-																date={comment.date}
-																text={comment.text}
-																author={comment.author}
-															/>
-																
-
-														)			
-
-
-
-													}
-
-													<div id="app"> </div>
-
-													class TunnelConfig extends React.component
-													{
-														constructor(props)
-														{	
-															super(props);
-															let Name = "";
-															let userName = "";
-															let PointofPresence = 0;
-															let PointofEntry = 0;
-															const Nodes = [];
-
-														}
-													}
-													class NodeConfig extends React.component
-													{
-														constructor(props)
-														{
-															super(props);
-															let cloudProvider = "";
-															let Region = "";
-															let ImageName = "";
-															let PublicIP = "";
-															let PrivateIP = "";
+									When render calls </Clock > ==> It calls the constructor for Clock
+									{date : new Date()} is used to create a new date object, sets this.state to an object including the current time
 
+									Allocate variables in the constructor 
 
-														}
-													}
 
+									componentDidMoubt() ==> Invoked right after a component is inserted into the tree. Init that requires DOM nodes goes here. Good place to instantiate a network request
 
-													function Config(props) {
-													  return <h1>Your tunnel name is {props.name} <br />
-													    UserName {props.userName}.<br />
-													   Point of Presence {props.pointofPresence} <br />
-													    Pont of Entry {props.pointofEntry}</h1>;
-													}
+									setstate() ==> Called in  componentDidMount() ==> will trigger extra rendering 
+									Though setstate should be initialized in the constructor 
 
+									componentDidUpdate() ==> invoked immediatley after updating has occured, not in the initial rendering 
 
-													function App() {
-													  return (
-													    <div>
-													      <Config name=" " 
-													          userName=" "
-													          pointofPresence=" "
-													          pontofEntry=" "
-													          />
-													     
-													    </div>
-													  );
-													}
+									componentMount() ==> Similar to a comp constructor 
+									componentWillUnmount ==> Similar to a destructor
 
-													ReactDOM.render(<App />, document.getElementById('app'));
+									shouldComponenetUpdate(nextProps, nextState)  ==> Let React know if a comp output is not affected by the current change 
+									in state or props 
 
+									Router configs:
 
+									import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+									import Loadable from 'react-loadable';
 
-												function NetConfig(props)	
-												{
-													 return <h1>Cloud Provider {props.cloudProvider} <br />
-													    Region {props.region}.<br />
-													   Image Name {props.imageName} <br />
-													    Pulic IP {props.publicIp}</h1>;
-													    Private IP {props.privateIp}
-												}
+									const Loading = () => <div>Loading...</div>;
 
-												function App() {
-													  return (
-													    <div>
-													      <NetConfig cloudProvider=" " 
-													          region=" "
-													          p=" "
-													          pontofEntry=" "
-													          />
-													     
-													    </div>
-													  );
-													}
+									const Home = Loadable({
+									  loader: () => import('./routes/Home'),
+									  loading: Loading,
+									});
 
-													
+									const About = Loadable({
+									  loader: () => import('./routes/About'),
+									  loading: Loading,
+									});
 
+									const App = () => (
+									  <Router>
+									    <Switch>
+									      <Route exact path="/" component={Home}/>
+									      <Route path="/about" component={About}/>
+									    </Switch>
+									  </Router>
+									);
 
+									Provider vs Consumer:
 
 
-													Component is essentially a class
-													Class is a rendered function
 
+									HF/ ephermal ID Baic / HF files / hf.toml : Config files info
 
-													Class ----- extends React.Component
-													{
-														constructor(props)
-														{
-															super(props);
-															this.state = { dtae: new Date()};
-														}
-														render()
-														{
-															return (
 
-																	<div>
-																		<h1> Hello </h1>
-																		<h2> It's {this.state.date.tolocaleTimeString()} </h2>
-																	</div>	
+									Name = "Country"
+									ConfFilename = "xxxx.conf"
+									SecretsFileName = "xxx.secrets"
+									PoPCCloudProvider(AWS)
 
+									switch()
 
-															)
-														}
-													}
+									:: ==> Binding operator
 
-													Constructor:
 
-														When render calls </Clock > ==> It calls the constructor for Clock
-														{date : new Date()} is used to create a new date object, sets this.state to an object including the current time
+									var o = {
+								    r: 'some value',
+								    t: 'some other value'
+								};
+								is functionally equivalent to
 
-														Allocate variables in the constructor 
+								var o = new Object();
+								o.r = 'some value';
+								o.t = 'some other value';
 
 
-														componentDidMoubt() ==> Invoked right after a component is inserted into the tree. Init that requires DOM nodes goes here. Good place to instantiate a network request
+<
 
-														setstate() ==> Called in  componentDidMount() ==> will trigger extra rendering 
-														Though setstate should be initialized in the constructor 
 
-														componentDidUpdate() ==> invoked immediatley after updating has occured, not in the initial rendering 
+<button type="button" className="button" onClick={this.onNodeClick}>
+<p>
+Node
+</p>	
+</button>
 
-														componentMount() ==> Similar to a comp constructor 
-														componentWillUnmount ==> Similar to a destructor
+<button type="button" className="button" onClick={this.onLoadClick}>
+<p>
+Load
+</p>
+</button>	
 
-														shouldComponenetUpdate(nextProps, nextState)  ==> Let React know if a comp output is not affected by the current change 
-														in state or props 
+<button type="button" className="button" onClick={this.onSaveButtonClick}>
+<p>
+Save
+</p>
+</button>
 
-														Router configs:
+div is like a section of the site that you want to be managed via css
 
-														import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-														import Loadable from 'react-loadable';
 
-														const Loading = () => <div>Loading...</div>;
 
-														const Home = Loadable({
-														  loader: () => import('./routes/Home'),
-														  loading: Loading,
-														});
+Header:
+<header>
 
-														const About = Loadable({
-														  loader: () => import('./routes/About'),
-														  loading: Loading,
-														});
+<div className="welcomeLegend">
+<div className="welcome">
+	<h1>Welcome to Ephermal</h1>
+</div>
+<div className="legend">
+	<div className="active">
+	<p>active</p>
 
-														const App = () => (
-														  <Router>
-														    <Switch>
-														      <Route exact path="/" component={Home}/>
-														      <Route path="/about" component={About}/>
-														    </Switch>
-														  </Router>
-														);
 
-														Provider vs Consumer:
+</header>
 
 
 
-														HF/ ephermal ID Baic / HF files / hf.toml : Config files info
+Meeting stuff:
 
-														
-														Name = "Country"
-														ConfFilename = "xxxx.conf"
-														SecretsFileName = "xxx.secrets"
-														PoPCCloudProvider(AWS)
 
-														switch()
+Want to Gt Connection history box to render all the 							
 
-														:: ==> Binding operator
 
-
-														var o = {
-													    r: 'some value',
-													    t: 'some other value'
-													};
-													is functionally equivalent to
-
-													var o = new Object();
-													o.r = 'some value';
-													o.t = 'some other value';
-
-
-													<
-
-
-													<button type="button" className="button" onClick={this.onNodeClick}>
-													<p>
-														Node
-													</p>	
-													</button>
-
-													<button type="button" className="button" onClick={this.onLoadClick}>
-													<p>
-														Load
-													</p>
-													</button>	
-
-													<button type="button" className="button" onClick={this.onSaveButtonClick}>
-													<p>
-														Save
-													</p>
-													</button>
-
-													div is like a section of the site that you want to be managed via css
-
-
-
-													Header:
-														<header>
-
-															<div className="welcomeLegend">
-																<div className="welcome">
-																	<h1>Welcome to Ephermal</h1>
-																</div>
-																<div className="legend">
-																	<div className="active">
-																	<p>active</p>
-
-
-														</header>
-
-
-	
-				Meeting stuff:
-
-
-														Want to Gt Connection history box to render all the 							
-
-
-														Active: {this.getActiveCount()} 			Building: {this.getBuildingCount()}		 	idle: {this.getIdleCount()}													
-														const Tunnelcount = 0;
-														incrementActiveTunnels()
-														{
-															thi
+Active: {this.getActiveCount()} 			Building: {this.getBuildingCount()}		 	idle: {this.getIdleCount()}													
+const Tunnelcount = 0;
+incrementActiveTunnels()
+{
+thi
 s														} 
 
-														onAddTunnelClick()
-														{
-															this.props.onAddTunnelClick();
-															
-														}
+onAddTunnelClick()
+{
+this.props.onAddTunnelClick();
 
-														getActiveTunnelCount()
-														{
-															 return (this.props.ActiveTunnelCount());
-														}
+}
 
+getActiveTunnelCount()
+{
+return (this.props.ActiveTunnelCount());
+}
 
-														if(console.log == 'SUCCESS')
-														{
-															ActiveTunnelcount++;
-														}
 
-														else if(console.log == 'ERROR')		
-														{	
-															Idlecount++;
-														}
+if(console.log == 'SUCCESS')
+{
+ActiveTunnelcount++;
+}
 
+else if(console.log == 'ERROR')		
+{	
+Idlecount++;
+}
 
 
-														<header>
-												          <div className="welcomeLegend">
-												            <div className="welcome">
-												              <h1>Welcome To Ephemeral</h1>
-												            </div>
-												            <div className="legend">
-												              <div className="active">
-												                <p>active {this.getActiveTunnelCount()}</p>
-												              </div>
-												              <div className="building">
-												                <p>building {this.getBuildingTunnelCount()}</p>
-												              </div>
-												              <div className="idle">
-												                <p>idle {this.getBuildingCount()}</p>
-												              </div>
-												            </div>
-												            <div className="settingsIcon">
 
-												            </div>
-												          </div>
-												        </header>
+<header>
+<div className="welcomeLegend">
+<div className="welcome">
+<h1>Welcome To Ephemeral</h1>
+</div>
+<div className="legend">
+<div className="active">
+<p>active {this.getActiveTunnelCount()}</p>
+</div>
+<div className="building">
+<p>building {this.getBuildingTunnelCount()}</p>
+</div>
+<div className="idle">
+<p>idle {this.getBuildingCount()}</p>
+</div>
+</div>
+<div className="settingsIcon">
 
-												        Action ==> Add tunnel, onClick=this.props.onAddTunnelClick();
+</div>
+</div>
+</header>
 
+Action ==> Add tunnel, onClick=this.props.onAddTunnelClick();
 
 
-												        Everything in React is in a component (i.e JS Classes ) 
 
-												        class Hello extends React.Component
-												        {
-												        	render()
-												        	{ return <h1>Hello World</h1>}
-												        	
-												        }
-												        	ReactDOM.render(<Hello />, document.getElementById("root"));
+Everything in React is in a component (i.e JS Classes ) 
 
+class Hello extends React.Component
+{
+render()
+{ return <h1>Hello World</h1>}
 
-												        	Two types of data: State and Props
+}
+ReactDOM.render(<Hello />, document.getElementById("root"));
 
 
+Two types of data: State and Props
 
-												        	State ==> Private and can be changed from within the component itself 
-												        	Props ==> External, not controlled by the component itself, passed up by upper components 
 
-												        	/*	A component can change its internal state directly, it can't change its props directly */
 
+State ==> Private and can be changed from within the component itself 
+Props ==> External, not controlled by the component itself, passed up by upper components 
 
+/*	A component can change its internal state directly, it can't change its props directly */
 
 
-												        	Props: 
-												        	<Hello /> Component is static af, renders the same message regardless, 
-												        	To add more reusability, add props to make a variable, for example, <Hello message="Amer" />
-												        	imputes that props is called "message" and has the value of "Amer"
 
-												        	To access props ==> { this.props.message } ==> The addition of curly braces imputes something called "escaping"
 
+Props: 
+<Hello /> Component is static af, renders the same message regardless, 
+To add more reusability, add props to make a variable, for example, <Hello message="Amer" />
+imputes that props is called "message" and has the value of "Amer"
 
-												        	Want a component to change its own data : Use state
+To access props ==> { this.props.message } ==> The addition of curly braces imputes something called "escaping"
 
-												        	Other way of storing data,  i.e UI, use states 
 
-												        	Initializing state: 
-												        		class Hello extends React.component
-												        		{
-												        			constuctor()
-												        			{
-												        				super();
-												        				this.state = {message: "Amer the Engineer"};
-												        			}
-												        			render()
-												        			{	return <h1> Hello {this.state.message } </h1>; }
-												        		}
+Want a component to change its own data : Use state
 
+Other way of storing data,  i.e UI, use states 
 
+Initializing state: 
+class Hello extends React.component
+{
+constuctor()
+{
+	super();
+	this.state = {message: "Amer the Engineer"};
+}
+render()
+{	return <h1> Hello {this.state.message } </h1>; }
+}
 
-												        		To change state:
-												        			Use updateMessage()
-												        			{	
-												        				this.setState({message: "my friend"});
-												        			}
-												        				render()
-												        				{
-												        					return <h1> Hello {this.state.message} ! </h1>
 
-												        				}
 
-												        			this.bind(updateMessage);
+To change state:
+Use updateMessage()
+{	
+	this.setState({message: "my friend"});
+}
+	render()
+	{
+		return <h1> Hello {this.state.message} ! </h1>
 
-												        			render()
-												        			{
-												        				return(
-												        						<div>
-												        							<h1> Hello {this.state.message} </h1>
-												        							<button onClick={this.updateMessage}> Click me! </button>
+	}
 
-												        				)
+this.bind(updateMessage);
 
+render()
+{
+	return(
+			<div>
+				<h1> Hello {this.state.message} </h1>
+				<button onClick={this.updateMessage}> Click me! </button>
 
-												        			}
+	)
 
 
-												        			onAddTunnelClick ==> Props since we don't change it later 
+}
 
 
+onAddTunnelClick ==> Props since we don't change it later 
 
-												        			class Login extends Component
-												        			{
-												        				constructor(props)
-												        				{
-												        					super(props);
 
-												        					this.state = {
-												        							email: "";
-												        							password: "";
-												        					};
-												        				}
 
-												        					validateCreds()
-												        					{
-												        						return this.state.email.length > 0 && this.state.password.length > 0;
-												        					}
-												        					
-												        					handleChange = event =>{
+class Login extends Component
+{
+	constructor(props)
+	{
+		super(props);
 
-												        						this.setState({
-												        							[event.target.id]: event.target.value
-												        						});
-												        						}
+		this.state = {
+				email: "";
+				password: "";
+		};
+	}
 
-												        					handleSubmit = event => {
-												        							event.preventDefault();
-												        					}	
+		validateCreds()
+		{
+			return this.state.email.length > 0 && this.state.password.length > 0;
+		}
 
-												        						render()
-												        						{
+		handleChange = event =>{
 
-												        							return 
-												        							(
+			this.setState({
+				[event.target.id]: event.target.value
+			});
+			}
 
-												        								<div className="Login">
-												        									<form onSubmit={this.handleSubmit}>
-												        										<FormGroup controlId="email" bsSize="large">
-												        											<ControlLabel>Email</ControlLabel>
-												        											<FormControl
-												        												autoFocus
-												        												type="email"
-												        												value={this.state.email}
-												        												onChange={this.state.handleChange}
-												        											/>
-												        											
-												        											</FormGroup>
-												        											<FormGroup controlId="password"	bsSize="large">
-												        												<ControlLabel>Password</ControlLabel>
-												        												<FormControl
-												        													value={this.state.password}
-												        													onChange={this.handleChange}
-												        													type="password"
-												        												/>
+		handleSubmit = event => {
+				event.preventDefault();
+		}	
 
-												        												<FormGroup>
-												        												<Button
-												        												block
-												        												bsSize="large"
-												        												disabled={!this.validateForm()}
-												        												type="submit"
-												        												>
-												        												Login
-												        													</Button>
-												        														</form>
-												        														</div>
+			render()
+			{
 
+				return 
+				(
 
+					<div className="Login">
+						<form onSubmit={this.handleSubmit}>
+							<FormGroup controlId="email" bsSize="large">
+								<ControlLabel>Email</ControlLabel>
+								<FormControl
+									autoFocus
+									type="email"
+									value={this.state.email}
+									onChange={this.state.handleChange}
+								/>
 
-												        							);
+								</FormGroup>
+								<FormGroup controlId="password"	bsSize="large">
+									<ControlLabel>Password</ControlLabel>
+									<FormControl
+										value={this.state.password}
+										onChange={this.handleChange}
+										type="password"
+									/>
 
+									<FormGroup>
+									<Button
+									block
+									bsSize="large"
+									disabled={!this.validateForm()}
+									type="submit"
+									>
+									Login
+										</Button>
+											</form>
+											</div>
 
-												        						}
 
 
+				);
 
 
+			}
 
-												        			}
 
 
-												        			<h1 style="background-color:Tomato;"> </h1>
 
 
-												        			body{
-												        					background-color: lightblue;
-												        					background-image: url("bgdesert.jpg")
-												        					background-position: right top;
-												        			}
+}
 
-												        			Borders:
 
-												        				Border styles: 
+<h1 style="background-color:Tomato;"> </h1>
 
-												        				p.dotted {border-style: dotted;}
-																		p.dashed {border-style: dashed;}
-																		p.solid {border-style: solid;}
-																		p.double {border-style: double;}
-																		p.groove {border-style: groove;}
-																		p.ridge {border-style: ridge;}
-																		p.inset {border-style: inset;}
-																		p.outset {border-style: outset;}
-																		p.none {border-style: none;}
-																		p.hidden {border-style: hidden;}
-																		p.mix {border-style: dotted dashed solid double;}
 
+body{
+		background-color: lightblue;
+		background-image: url("bgdesert.jpg")
+		background-position: right top;
+}
 
+Borders:
 
-																		Border Width:
-																		medium, thin, and thick
-																		or in px
-																		(Top, right, bottom, left)
+	Border styles: 
 
-																		Color:
+	p.dotted {border-style: dotted;}
+		p.dashed {border-style: dashed;}
+		p.solid {border-style: solid;}
+		p.double {border-style: double;}
+		p.groove {border-style: groove;}
+		p.ridge {border-style: ridge;}
+		p.inset {border-style: inset;}
+		p.outset {border-style: outset;}
+		p.none {border-style: none;}
+		p.hidden {border-style: hidden;}
+		p.mix {border-style: dotted dashed solid double;}
 
-																				border color: red
-																				OR border color: red green blue yellow
-																				(top, right, bottom,left)
 
 
-																				border: width style color
+		Border Width:
+		medium, thin, and thick
+		or in px
+		(Top, right, bottom, left)
 
-																				i.e: 
-																				border: 5px solid red;
+		Color:
 
-																				border-left,border-right, border-bottom
+				border color: red
+				OR border color: red green blue yellow
+				(top, right, bottom,left)
 
-																					border-bottom: 
 
-																					border-left-width
-																					border-left-style
-																					corder-left-color
-																					border-right-width, 
+				border: width style color
 
+				i.e: 
+				border: 5px solid red;
 
+				border-left,border-right, border-bottom
 
+					border-bottom: 
 
-																					Margins:
+					border-left-width
+					border-left-style
+					corder-left-color
+					border-right-width, 
 
-																						Space between the the edges and div
 
-																						div
-																						{
-																							border: 1px solid black;
-																							margin-top: 100px;
-																							margin-boottom: 100px;
-																							margin-right: 150px;
-																							margin-left: 80px;
-																						}
 
 
-																						top, right, bottom, left
-																						top,right, bottom
-																						right, left
-																						All four
+					Margins:
 
-																						Auto: Horizontally allign the elements w its container
+						Space between the the edges and div
 
+						div
+						{
+							border: 1px solid black;
+							margin-top: 100px;
+							margin-boottom: 100px;
+							margin-right: 150px;
+							margin-left: 80px;
+						}
 
-																						Padding:
-																							space between the words and border
 
+						top, right, bottom, left
+						top,right, bottom
+						right, left
+						All four
 
-																							div {
-																						    border: 1px solid black;
-																						    background-color: lightblue;
-																						    padding-top: 50px;
-																						    padding-right: 30px;
-																						    padding-bottom: 50px;
-																						    padding-left: 20px;
-																						}
+						Auto: Horizontally allign the elements w its container
 
-																						
+
+						Padding:
+							space between the words and border
+
+
+							div {
+						    border: 1px solid black;
+						    background-color: lightblue;
+						    padding-top: 50px;
+						    padding-right: 30px;
+						    padding-bottom: 50px;
+						    padding-left: 20px;
+						}
+
+
