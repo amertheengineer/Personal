@@ -1,22 +1,9 @@
-/*
-    Amer Abdelaziz
-    U25449742
-
-        This code creates a roster and allows to
-        append, find, clear, and print out
-        a roster
-        Code from class
-
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#define NAMELEN 30
-#define TRUE 1
 #include "player.h"
-
+#include "readline.h"
 
 int main()
 {
@@ -50,7 +37,3 @@ for(;;)
      printf("\n");
     }
     }
-
-
-
-
