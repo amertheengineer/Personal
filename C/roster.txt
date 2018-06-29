@@ -1,0 +1,14 @@
+all: roster
+test: readline.o player.o roster.o
+   gcc readline.o player.o roster.o -o roster
+readline: readline.c
+   gcc readline.c -o readline.o
+
+player: player.c
+   gcc player.c -o player.o
+
+roster: roster.c
+   gcc roster.c -o roster.o
+
+
+ 
