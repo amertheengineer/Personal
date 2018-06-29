@@ -61,20 +61,30 @@ public:
 		i = -1, j = -1;
 
 	}
+	
 	bool operator == (Node const &N1)
 	{
-		
-		if ((this->j == N1.j) && (this->i == N1.i))
+		Node temp;
+		if ((this->j == N1.j) && (this->j == N1.i))
 			return true;
 
-		
 	}
 	bool operator != (Node const &N2)
 	{
+		Node temp;
 		if ((this->i != N2.i) || (this->j != N2.j))
 		{
 			return false;
 		}
+	}
+	Node operator = (Node const &N3)
+	{
+		Node N4;
+		N4.i = N3.i;
+		N4.j = N3.j;
+		N4.color = N3.color;
+		N4.dir = N3.dir;
+		return N4;
 	}
 };
 #endif // NODE_H

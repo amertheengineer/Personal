@@ -1,3 +1,4 @@
+
 #pragma once
 #ifndef GRAPH_H
 #define GRAPH_H
@@ -7,78 +8,117 @@
 #include <fstream>
 #include <array>
 #include "Node.h"
-using namespace std;
+	using namespace std;
 
 
 class Graph
 {
 public:
-	int x, y;
+	int x = 0, y = 0;
 	Node start;
 	Node finish;
-	Node** graph = new Node*[x];
+	Node** g1;
 	Graph()
 	{
 		x = 0;
-		y = 0;	
+		y = 0;
 
 	}
-	Graph(ifstream &myfile)
+	Graph(ifstream& myfile)
 	{
-		
-		
-		myfile.open("Test.txt");
 
 
-		int x1, y1;
+		cout << "File open" << endl;
+		int x2, y2;
+		myfile >> x2;
+		myfile >> y2;
 
-		myfile >> x1;
-		myfile >> y1;
 
 		string line;
-		Graph g2;
-		g2.x = x1;
-		g2.y = y1;
-		Node** g1 = new Node*[x1];
-		for (int i = 0; i < x1; i++)
+		/*Graph g2;
+		g2.x = x2;
+		g2.y = y2;
+		cout << g2.x << endl;
+		cout << g2.y << endl;*/
+
+		Node** g1 = new Node*[x2];
+
+		for (int i = 0; i < x2; i++)
 		{
-			g1[x1] = new Node[y1];
+			g1[i] = new Node[y2];
 		}
 		int x0 = 0;
 		int y0 = 0;
+		cout << x2 << y2 << endl;
+		start = g1[x0][y0];
+		finish = g1[x2 - 1][y2 - 1];
 
-		while (myfile)
+		std::string s1;
+
+		for (int i = 0; i < x2; i++)
 		{
-			if (getline(myfile, line, '-'))
+			for (int j = 0; j < y2; j++)
 			{
-				string c;
-				g1[x0][y0].set_color(c);
-				getline(myfile, line, ' ');
-				g1[x0][y0].set_dir( line);
-				g1[x0][y0].set_i(x0);
-				g1[x0][y0].set_j(y0);
-				y0++;
+				Node N1;
+				myfile >> s1;
 
-			}
-			else
-			{
-				getline(myfile, line);
-				g1[x0][y0].set_dir(line) ;
-				g1[x0][y0].set_i( x0);
-				g1[x0][y0].set_j (y0);
-				x0++;
-				y0 = 0;
+				int pos = s1.find("-");
+
+				cout << pos << endl;
+				string col1, dir1;
+				if (pos != -1)
+				{
+					col1 = s1.substr(0, pos);
+					dir1 = s1.substr(pos + 1, s1.length());
+
+				}
+				cout << col1 << endl;
+				cout << dir1 << endl;
+				N1.set_color(col1);
+				N1.set_dir(dir1);
+				N1.set_i(i);
+				N1.set_j(j);
+
+				g1[i][j] = N1;
+
+
 			}
 		}
+
+
+		/*while (myfile)
+		{
+		if (getline(myfile, line, '-'))
+		{
+		string c;
+		g1[x0][y0].set_color(c);
+		getline(myfile, line, ' ');
+		g1[x0][y0].set_dir( line);
+		g1[x0][y0].set_i(x0);
+		g1[x0][y0].set_j(y0);
+		y0++;
+
+		}
+		else
+		{
+		getline(myfile, line);
+		g1[x0][y0].set_dir(line) ;
+		g1[x0][y0].set_i( x0);
+		g1[x0][y0].set_j (y0);
+		x0++;
+		y0 = 0;
+		}
+		}*/
 		myfile.close();
 
 
 
 
-		}
+	}
+
 };
 
-	
+
 
 
 

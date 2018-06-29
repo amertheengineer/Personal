@@ -1,6 +1,7 @@
 #pragma once
 #ifndef DFS_H
 #define DFS_H
+#include <stdio.h>
 #include "Graph.h"
 #include <stack>
 #include "Node.h"
@@ -9,20 +10,19 @@ void DFS(Graph g)
 {
 	stack <Node> stack;
 	std::stack <int> num;
-	
+
 
 	int i = 0;
 	int j = 0;
 	int count;
-	Node current = g.graph[i][j];
-
-	g.graph[i][j].set_finish(true);
+	Node current = g.start;
 
 	Node temp;
 	stack.push(current);
 	num.push(0);
-
-	while (current != g.graph[g.x - 1][g.y - 1])
+	cout << current.get_i() << endl;
+	cout << current.get_j() << endl;
+	while (current != g.finish)
 	{
 		if (stack.empty())
 		{
@@ -30,11 +30,14 @@ void DFS(Graph g)
 		}
 		int count = 0;
 		current = stack.top();
+
 		current.set_i(i);
 		current.set_j(j);
 
 		string curr = current.get_dir();
-
+		string color = current.get_color();
+		current.set_dir(curr);
+		cout << curr << endl;
 		if (curr == "N")
 		{
 			if (i == 0)
@@ -45,14 +48,14 @@ void DFS(Graph g)
 			}
 			i--;
 			count++;
-			temp = g.graph[i][j];
+			temp = current;
 			while (temp.get_color() == current.get_color() || (temp.is_visited() == true && i != 1))
 			{
 				i--;
 				count++;
 				if (i != 1)
 				{
-					temp = g.graph[i][j];
+					temp = current;
 				}
 			}
 			if (i == -1)
@@ -61,7 +64,7 @@ void DFS(Graph g)
 				stack.pop();
 				continue;
 			}
-			g.graph[i][j].set_finish(true);
+			g.g1[i][j].set_finish(true);
 			num.push(count);
 			stack.push(temp);
 
@@ -77,7 +80,7 @@ void DFS(Graph g)
 			}
 			j++;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 
 			while ((temp.get_color() == current.get_color() || temp.is_visited() == true) && j != g.y)
 			{
@@ -85,7 +88,7 @@ void DFS(Graph g)
 				count++;
 				if (j != g.y)
 				{
-					temp = g.graph[i][j];
+					temp = g.g1[i][j];
 
 				}
 
@@ -94,7 +97,7 @@ void DFS(Graph g)
 					stack.pop();
 					continue;
 				}
-				g.graph[i][j].set_finish(true);
+				g.g1[i][j].set_finish(true);
 				num.push(count);
 				stack.push(temp);
 			}
@@ -111,14 +114,14 @@ void DFS(Graph g)
 			}
 			i++;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 			while (((temp.get_color() == current.get_color()) || temp.is_visited() == true && i != g.x))
 			{
 				i++;
 				count++;
 				if (i != g.x)
 				{
-					temp = g.graph[i][j];
+					temp = g.g1[i][j];
 				}
 			}
 			if (i == g.x)
@@ -127,7 +130,7 @@ void DFS(Graph g)
 				stack.pop();
 				continue;
 			}
-			g.graph[i][j].set_finish(true);
+			g.g1[i][j].set_finish(true);
 			num.push(count);
 			stack.push(temp);
 
@@ -143,14 +146,14 @@ void DFS(Graph g)
 			}
 			j--;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 			while (temp.get_color() == current.get_color() || (temp.is_visited() == true && j != -1))
 			{
 				j--;
 				count++;
 				if (j != 1)
 				{
-					temp = g.graph[i][j];
+					temp = g.g1[i][j];
 				}
 			}
 			if (j == -1)
@@ -159,7 +162,7 @@ void DFS(Graph g)
 				stack.pop();
 				continue;
 			}
-			g.graph[i][j].set_finish(true);
+			g.g1[i][j].set_finish(true);
 			num.push(count);
 			stack.push(temp);
 
@@ -175,7 +178,7 @@ void DFS(Graph g)
 			i--;
 			j++;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 			while ((temp.get_color() == current.get_color() || temp.is_visited() == true) && j != g.y)
 			{
 				i--;
@@ -187,7 +190,7 @@ void DFS(Graph g)
 					stack.pop();
 					continue;
 				}
-				g.graph[i][j].set_finish(true);
+				g.g1[i][j].set_finish(true);
 				num.push(count);
 				stack.push(temp);
 			}
@@ -204,14 +207,14 @@ void DFS(Graph g)
 			i--;
 			j--;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 			while ((temp.get_color() == current.get_color() || temp.is_visited() == true) && (i != -1 && j != -1))
 			{
 				i--;
 				j--;
 				count++;
 				if (i != -1 && j != -1)
-					temp = g.graph[i][j];
+					temp = g.g1[i][j];
 			}
 			if (i == -1 || j == -1)
 			{
@@ -219,7 +222,7 @@ void DFS(Graph g)
 				stack.pop();
 				continue;
 			}
-			g.graph[i][j].set_finish(true);
+			g.g1[i][j].set_finish(true);
 			num.push(count);
 			stack.push(temp);
 
@@ -238,7 +241,7 @@ void DFS(Graph g)
 			i++;
 			j++;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 
 			while ((temp.get_color() == current.get_color() || temp.is_visited() == true) && (i != g.x && j != g.y))
 			{
@@ -248,7 +251,7 @@ void DFS(Graph g)
 				count++;
 
 				if (i != g.x && j != g.y)
-					temp = g.graph[i][j];
+					temp = g.g1[i][j];
 
 			}
 			if (i == g.x || j == g.y)
@@ -257,7 +260,7 @@ void DFS(Graph g)
 				stack.pop();
 				continue;
 			}
-			g.graph[i][j].set_finish(true);
+			g.g1[i][j].set_finish(true);
 			num.push(count);
 			stack.push(temp);
 
@@ -274,7 +277,7 @@ void DFS(Graph g)
 			i++;
 			j--;
 			count++;
-			temp = g.graph[i][j];
+			temp = g.g1[i][j];
 
 			while ((temp.get_color() == current.get_color() || temp.is_visited() == true) && (i != g.x && j != -1))
 			{
@@ -282,7 +285,7 @@ void DFS(Graph g)
 				j--;
 				count++;
 				if (i != g.x && j != -1)
-					temp = g.graph[i][j];
+					temp = g.g1[i][j];
 			}
 
 			if (i == g.x || j == -1)
@@ -291,7 +294,7 @@ void DFS(Graph g)
 				stack.pop();
 				continue;
 			}
-			g.graph[i][j].set_finish(true);
+			g.g1[i][j].set_finish(true);
 			num.push(count);
 			stack.push(temp);
 
@@ -300,8 +303,8 @@ void DFS(Graph g)
 
 
 	}
-		
-	
+
+
 
 
 	std::stack <Node> rev;
@@ -320,7 +323,7 @@ void DFS(Graph g)
 
 	}
 	int c = 0;
-
+	ofstream outfile;
 	while (!rev.empty())
 	{
 		if (c == 0)
@@ -335,7 +338,17 @@ void DFS(Graph g)
 			break;
 		}
 
+		outfile.open("Output.txt");
+		cout << "Writing to Output file" << endl;
+		outfile << revnum.top() << rev.top().dir << " " << endl;
+		rev.pop();
+		revnum.pop();
+		c++;
+
 	}
+	cout << "Done" << endl;
+	outfile.close();
+
 
 }
 
