@@ -1,93 +1,115 @@
-// Code from class
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
-#define TRUE 1
-#define NAMELEN 30
 #include "player.h"
+/*
+    From class except for the delete function
 
-/************************************************************  *
-append_to_list: Prompts the user for information about a *
- * new player and then append the player into the end of the*
- * list. Prints an error message and returns prematurely if *
- * the player already exists or space could not be allocated*
- * for the player.
-    *
- * **********************************************************/
+*/
 struct player *append_to_list(struct player *roster){
-
-  struct player *cur, *new_node;
-  new_node = malloc(sizeof(struct player));
-   if (new_node == NULL)
-    {
-         printf("Database is full; can't add more players.\n");
-        return roster;
+   struct player *x, *temp;
+   char first[NAME_LEN+1], last[NAME_LEN+1];
+   int num, found;
+   x = roster;
+   printf("Enter the first name of the player: ");
+   scanf("%s", first);
+   printf("Enter the last name of the player: ");
+   scanf("%s", last);
+   printf("Enter the number of the player: ");
+   scanf("%i", &num);
+   found = 0;
+   while(x != NULL){
+       if(x->number == num)
+       found = 1;
+       x = x->next;
    }
-  printf("Enter player number: ");
-    scanf("%d", &new_node->number);
-  for (cur = roster;cur != NULL;cur = cur->next)
-    if (cur != NULL && new_node->number == cur->number)
-    {
-            printf("Player already exists.\n");
-          free(new_node);
-          return roster;
+   if(found){
+       printf("Player with this number already exists...\n");
+       return roster;
    }
-  printf("Enter player last name: ");
-  read_line(new_node->last_name, NAME_LEN);
-    printf("Enter player first name: ");
-      read_line(new_node->first_name, NAMELEN);
-  if(roster == NULL)   {
-roster = new_node;
- return roster;
-  }
-  else
-        {
-       for(cur = roster; cur->next!= NULL; cur = cur->next);
-        cur->next = new_node;
-         new_node->next = NULL;
+   else{
+       temp = (struct player *)malloc(sizeof(struct player));
+       strcpy(temp->first_name, first);
+       strcpy(temp->last_name, last);
+       temp->number = num;
+       temp->next = NULL;
+       if(roster == NULL){
+           return temp;
+       }
+       else{
+           x = roster;
+           while(x->next != NULL)
+           x = x->next;
+           x->next = temp;
            return roster;
-           }
-           }
-           /***********************************************************
-           * find_player: Prompts the user to enter a player number, *
-            * then looks up a player by number in the list.           *
-              * Prints the player's last name and first name if found.  *
-              * Otherwise, prints a message.
-            *  * ********************************************************/
-void find_player(struct player *roster)
-{
-               int number;
-                struct player *p;
-  printf("Enter player number: ");
-  scanf("%d", &number);
-  for(p=roster;        p != NULL && number != p->number;        p = p->next)
-    ;   if (p != NULL && number == p->number)
-    {
-        printf("Player name: %s, ", p->last_name);
-  printf("%s\n", p->first_name);
-  }
-  else
-    printf("Player not found.\n");
+       }
+   }
 }
-/*************************************************************
-
- * printList: Prints a listing of all players in the list,   *
- * showing the player number, player last name, and player   *
- * first name.
-     *
- * **********************************************************/
+void find_player(struct player *roster){
+   int num;
+   printf("Enter the number of the player to search for: ");
+   scanf("%i", &num);
+   while(roster != NULL){
+       if(roster->number == num){
+           printf("%s %s", roster->last_name, roster->first_name);
+           break;
+       }
+       roster = roster->next;
+   }
+   if(roster == NULL)
+       printf("The player does not exist...\n");
+}
 void printList(struct player *roster){
-      struct player *p;
-  printf("Player Number\tLast Name\t"          "First Name\n");
-  for (p = roster; p != NULL; p = p->next)
-    printf("%d\t\t%s\t\t%s\n", p->number, p->last_name,  p->first_name);
+   while(roster != NULL){
+       printf("%s %s %i\n", roster->last_name, roster->first_name, roster->number);
+       roster = roster->next;
+   }
+}
+void clearList(struct player *roster){
+   struct player *x;
+   while(roster != NULL){
+       x = roster;
+       roster = roster->next;
+       free(x);
+   }
 }
 
-void clearList(struct player *roster) {
-  struct player *p;
-  while(roster!=NULL)   {
- p = roster;  roster = roster->next;
-         if(p!=NULL)     free(p);   }
+/*
+    This function deletes a player from the roster
+
+*/
+struct player* delete_from_list(struct player*roster) {
+   printf("Enter player number to be deleted:\n");
+       int pnum = 0;
+       scanf("%d",&pnum);
+       struct player *x, *prev = NULL, *cur = NULL;
+       x = roster;
+       while(x != NULL)
+            {
+
+               if(x->number == pnum)
+                {
+                   if(prev == NULL)
+                        {
+
+                            x = x->next;
+
+                        }
+                        else
+                           {
+                               prev->next = x->next;
+                           }
+                   cur = x;
+                   break;
+               }
+               prev = x;
+               x = x->next;
+
+           }
+
+       if(cur == NULL)
+           printf("Player not found: id = %d",pnum);
+       else
+           printf("Deleted Player with id = %d",pnum);
+// return roster or deleted player - change it as per ur need
+       return cur;
 }
+
