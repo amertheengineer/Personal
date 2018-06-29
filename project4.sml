@@ -64,8 +64,8 @@ fun powerset( (a,A) ) =
 	and determines the free variables of th 
 	expression and adds it onto a list
 
-	“I pledge my Honor that I have not
-	cheated, and will not cheat, on this assignment.”
+	â€œI pledge my Honor that I have not
+	cheated, and will not cheat, on this assignment.â€
 
 *)
 
