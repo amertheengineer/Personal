@@ -1,92 +1,190 @@
+
 /*
+    Amer Abdelaziz
+    U25449742
 
-Amer Abdelaziz
-U25449742
-
-selection_sort.c, project 5, Program Design
+    This program sorts its command line arguments of 10 numbers
+    which are integers and prints out either is descending or ascending order
 
 
- */
+*/
+
+
 #include <stdio.h>
-#define N 5
+#include <string.h>
+#include <stdlib.h>
+#define MAX 10
+#define TRUE 1
+#define FALSE 0
+#define ERR -1
 
+// Calling the functions
 
-void selection_sort(int a[], int n);
-int *find_largest(int *a, int n);
-void swap(int *p, int *q);
-int main(void)
-{   int i;
-    int a[N];
+void selection_sort_as(int a[], int n);
+void selection_sort_ds(int a[], int n);
+int  ordred(const char argv[]);
+void changearray(int *arr, char *argv[], int n);
 
-  printf("Enter %d numbers to be sorted: ", N);
-
-    for (i = 0; i < N; i++)
-
-    scanf("%d", &a[i]);
-
-        selection_sort(a, N);
-        printf("In sorted order:");
-
-            for (i = 0; i < N; i++)
-
-                printf(" %d", a[i]);
-                printf("\n");
-
-
-  return 0;
-
-  }
-  // I the selection_sort function, we call both find_largest and swap functions (and use recursion)
-
-void selection_sort(int *a, int n)
+int main(int argc, char *argv[])
 {
 
-    int *max;
-    int *last;
+    int input[MAX];
 
-    last = a+n-1;
+    /* Condition whether to ascend or descend
 
-    if (n == 1)
+        Also changing the array form a string into an
+
+        integer array
+
+            */
+
+    if(ordred(argv[1]) != ERR)
+    {
+        changearray(input, argv, argc);
+
+
+    if(ordred(argv[1]) == TRUE)
+        {
+            selection_sort_as(input,MAX);
+
+        }
+            else
+            {
+                    selection_sort_ds(input,MAX);
+
+            }
+
+        }
+        else
+        {
+            printf("Error in the input!");
+
+        }
+
+                int z;
+                for(z = 0; z < MAX; z++)
+                {
+
+                    printf("%d",input[z]);
+
+                }
+
+    return 0;
+}
+/*
+    Selection_sort function from class
+    with a minor change to the ascending
+    It checks if numbers are larger and replaces it with a max value
+
+*/
+void selection_sort_as(int a[], int n)
+{
+
+    int z, max = 0, temp;
+
+  if (n == 1)
     return;
 
-            max = find_largest(a,n);
-            swap(last,max);
-            selection_sort(a, n-1);
+  for (z = 1; z < n; z++)
+  {
+    if (a[z] > a[max])
+      max = z;
+  }
+
+  if (max < n - 1)
+    {
+
+            temp = a[n-1];
+
+            a[n-1] = a[max];
+
+            a[max] = temp;
+
+    }
+
+  selection_sort_as(a, n - 1);
+}
+
+/*
+    Selection_sort function from class
+    with a minor change to the descending
+    It checks if numbers are smaller and replaces it with a min value
+
+
+    */
+void selection_sort_ds(int a[], int n)
+{
+
+    int min, temp, z;
+
+    if(n == 1)
+        return;
+
+
+  for (z = 1; z < n; z++)
+  {
+       if (a[z] < a[min])
+    min = z;
 
   }
 
-  // The find_largest function returns a max value from any given data
 
-int *find_largest(int *a, int n)
+  if (min < n - 1)
+   {
+
+       temp = a[n-1];
+
+       a[n-1] = a[min];
+
+       a[min] = temp;
+  }
+
+    selection_sort_ds(a, n - 1);
+
+}
+/*
+    This function checks whether to ascend or descend the
+
+    arrays based off of the input
+
+    */
+
+int ordred(const char *argv)
+{
+    if(strcmp(argv,"-d") == 0)
     {
-            int *p;
-            int *amax = a;
+        return FALSE;
 
-            for(p = a+1;p < a+n;p++)
+    }
+        else if(strcmp(argv,"-a") == 0)
+        {
+            return TRUE;
+
+        }
+
+                else
                 {
 
-                    if(*p > *amax)
-                    {
-                        amax = p ;
-
-                    }
+                    return ERR;
                 }
+}
 
-                    return amax;
+/*
+    This function changes the array from a string
+    into an integer array
 
-    }
+*/
 
-    // The swap function swaps two variables
+void changearray(int *arr, char *argv[], int n)
+{
+    int i;
 
-void swap(int *p, int *q)
-
+    for(i = 2; i < n; i++)
     {
 
-            int temp;
-
-            temp = *q;
-            *q = *p;
-            *p = temp;
-
-
+        *arr++ = atoi(argv[i]);
     }
+
+
+}
+
