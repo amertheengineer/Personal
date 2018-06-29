@@ -1,0 +1,735 @@
+			
+
+				GO LANG PROGRAMMING
+
+				Syntax:
+				Vars ==> var x type = .......
+
+Create a function:
+package main
+import "fmt"
+func main()
+{
+	fmt.Println("1 + 1 =", 1 + 1)
+}
+Bools:
+fmt.Println(true && true) ==> true
+fmt.Println(true && false) ==> false
+fmt.Println(true || false) ==> true
+
+
+
+Variables:
+
+	import "fmt"
+
+	func main()
+	{
+
+		var x string
+		x = "Hello World" // x is assigned to the string hello world
+		fmt.Println(x)
+	}
+
+
+
+	Strings:
+
+	var x string 
+	x = "Hello"
+	fmt.println(x)
+	x = x + "world" // x+="world"
+	fmt.Println(x) ==> Hello world
+
+	ANOTHER METHOD:
+
+	x := 5
+	fmt.Println(x) // 5, no need to type what x is
+
+	
+
+
+
+
+							General Scope: 
+
+							var x string = "Hello world"
+
+							fun main()						
+							{
+							fmt.Println(x)
+							}
+							fun f()
+							{
+							fmt.Println(x)
+							}
+
+
+							Constants:
+
+							Syntax:
+
+							const x string = "Hello World"
+
+							fmt.Println(x)
+
+													Defining multiple variabls:
+
+													// var struct
+													var
+													{
+														a = 10
+														b = 5
+														c = 15
+													}
+
+							I/O:
+							package main
+							import "fmt"						
+
+							func main()
+							{
+								fmt.Println("Enter a number : ")
+								var input float
+								fmt.Scanf("%f", &input)
+
+								output := input * 2
+								fmt.Println(output)
+
+							}
+
+
+					Control:
+					
+
+					for loop:
+
+					import "fmt"
+
+					func main()
+					{
+						i := 1
+						for i <= 10
+						{
+							fmt.Println(i)
+							i++
+						}
+					}		
+
+						OR:
+
+						for(i := 1; i <= 10; i++)
+						{
+							fmt.Println(i);
+						}
+
+
+
+					if statement:
+
+					Normal if-else branching
+						for i:=0; i <= 100 ; i++
+						{
+							if i % 2 == 0
+								{
+									fmt.println("even")
+								}
+							else
+							{
+								fmt.Println("Odd")
+							}	
+
+						}
+						
+
+					Swithces:
+					
+						switch i
+						{
+							case 0: fmt.Println("Zero")
+							case 1: fmt.Println("One")
+							.
+							.
+							..
+							....
+							.
+						}
+
+
+				Arrays:
+				
+				Syntax: 
+					var x[5] int
+
+				Example:
+					import "fmt"
+					func main()
+					{
+						var x[5] int
+						x[4] = 100
+						fmt.Println(x)
+					}			
+					Output ==>	[0 0 0 0 100]
+
+					// Computes the average
+
+					func main()
+					{
+						var arr[5] float64
+						x[0] = 98
+						x[1] = 56
+						x[2] = 41
+						x[3] = 9898
+						x[4] = 67
+
+						var total float = 0
+
+						for i := 0; i < 5; i++
+						{
+							total += x[i]
+						}
+
+						fmt.Println( total / float64(len(x)))
+
+					}
+
+						range ==> e.g range x ==> The variable we want to loop over user for arrays
+						_ ==> Similar to a "don't care" in PL, telling the compiler that we don't need this 
+
+						Creting an array:
+
+						x := [5] float64 {98,93,77,82,83}
+
+
+						Slices:
+
+						- A segment of an array, like array slices are indexable, and have lengths,
+						- Length here is allowed to change
+
+						e.g var x[] float64
+						- Missing array size, created initially with a size of 0
+
+						To create a slice:
+						x := make([]float64, 5)
+
+						-Essentially a sub-array
+
+						Syntax:
+						[low : high]
+
+						arr := [5]float64 {1,3,5,25,6}
+						x := arr[0:5]
+						y := arr[0, len(arr)]
+
+						func main()
+						{
+
+							slice1 := []in {1,2,3}	==> {1,2,3}
+							slice2 := append(slice1, 4,5) ==> {1,2,3,4,5}
+
+							// Copy
+
+								func main()
+								{
+
+									slice1 = []int {1,2,3}
+									slice2 = make([]int , 2) ==> Creates an int 
+									copy(slice2, slice1) ==> Slice2: {1,2} Slice 1: {1,2,3}
+									fmt.Println(slice1, slice2)
+
+
+								}
+
+						}
+
+
+						Map:
+						-Unordered collection of key-value pairs 
+						Syntax:
+
+						var x map[string] int
+
+						String is the type for the key 
+						Int is the type for the Value
+						
+
+
+						\\ Works 
+
+						x := make(map[int]int)
+						x[1] = 10
+						fmt.Println(x[1])
+					
+						fmt.Println(x[1]) ==> The key since we can't ref x instead of x[1] 
+
+						Similarly:
+
+						x:= make(map[string]int)
+						x["key"]=10
+						fmt.Println(x["key"])
+
+
+						length of map ==> len(x)
+
+						Dynamic sizing
+
+						Built-in delete function ==> delete(x,1)
+
+						e.g:
+						package main
+
+						import "fmt"
+
+						func main() {
+						  elements := make(map[string]string)
+						  elements["H"] = "Hydrogen"
+						  elements["He"] = "Helium"
+						  elements["Li"] = "Lithium"
+						  elements["Be"] = "Beryllium"
+						  elements["B"] = "Boron"
+						  elements["C"] = "Carbon"
+						  elements["N"] = "Nitrogen"
+						  elements["O"] = "Oxygen"
+						  elements["F"] = "Fluorine"
+						  elements["Ne"] = "Neon"
+
+						  fmt.Println(elements["Li"])
+							}
+
+							Map of a Map:
+
+
+						func main() {
+						  elements := map[string]map[string]string{
+						    "H": map[string]string{
+						      "name":"Hydrogen",
+						      "state":"gas",
+						    },
+						    "He": map[string]string{
+						      "name":"Helium",
+						      "state":"gas",
+						    },
+						    "Li": map[string]string{
+						      "name":"Lithium",
+						      "state":"solid",
+						    },
+						    "Be": map[string]string{
+						      "name":"Beryllium",
+						      "state":"solid",
+						    },
+						    "B":  map[string]string{
+						      "name":"Boron",
+						      "state":"solid",
+						    },
+						    "C":  map[string]string{
+						      "name":"Carbon",
+						      "state":"solid",
+						    },
+						    "N":  map[string]string{
+						      "name":"Nitrogen",
+						      "state":"gas",
+						    },
+						    "O":  map[string]string{
+						      "name":"Oxygen",
+						      "state":"gas",
+						    },
+						    "F":  map[string]string{
+						      "name":"Fluorine",
+						      "state":"gas",
+						    },
+						    "Ne":  map[string]string{
+						      "name":"Neon",
+						      "state":"gas",
+						    },
+						  }
+
+						  if el, ok := elements["Li"]; ok {
+						    fmt.Println(el["name"], el["state"])
+						  }
+						}
+
+
+						name, ok ==> Returns the result and the bool for either true or not 
+
+
+
+
+
+						Functions:
+
+
+							func average(xs[] float64) float64
+							{
+								var total float64 = 0.0
+								for _; v:= range xs  // v ~ foreach(x in xs)
+								{
+									total += v
+								}	
+									return total/ float64( len(xs))
+
+
+							}
+
+
+
+						func f() (int, int)
+						{
+							return 5,6
+						}	
+						func main()
+						{
+							x, y := f() // Assigning the values x and y to 4 and 5 respectivaley 
+						}
+
+
+						Variadic Functions:
+
+						func add(args .... int) int
+						{
+							total := 0
+							for_ , v := range args
+							{
+								total+= v
+							}
+							return total
+
+						}
+							...... ==> Implies that function could take 0 or more parameters 
+
+
+
+							Possible to create functions within functions:
+
+							e.g.
+							{
+
+								func main()
+								{
+
+									add := func(x , y int) int 
+									{
+										return x + y
+									}
+
+									fmt.Println(add(1,1))	
+
+								}	
+
+
+							}
+
+							add has a type of func(int, int) int ==> Function that takes two ints and returns and int
+
+							func main()
+							{
+
+									x:= 0 
+									increment := func() int 
+									{
+									x++
+									return x
+									}
+							}
+
+
+
+
+							uint ==> Unsigned integer
+
+
+
+							func makeEven() func() uint
+							{
+
+								i := uint(0)
+								return func() (ret uint)
+								{
+									ret = i
+									i+=2
+									return 
+								}
+
+
+							}
+
+
+
+
+							Recursion:
+
+
+
+							Classic Example:
+
+							func fact (x uint) uint
+							{
+
+								if x == 0
+								return 1
+								else
+								return x * fact(x-1)
+
+
+							}
+
+
+							Defer: Schedules a function call to be run after the function completes
+
+							Example:
+								import "fmt"
+
+								func first()
+								{
+									fmt.Println("1st")
+								}
+								func sec()
+								{
+									fmt.Println("2nd")
+								}
+								func main()
+								{
+									defer second()
+									first()
+								}
+
+
+									Logically equivalent to:
+
+										func main()
+										{
+											fist()
+											second()
+										}
+
+							
+
+							Panic & Recover:
+
+							Panic ==> Causes a function to have a runtime error
+							Built-in Recover function ==> Stops the panic function and returns the val that was assigned to the panic function
+
+							Panic function takes precedence over other built-in functions
+
+
+
+							Pointers:
+
+							Differentiate:
+
+								func zero(x int)
+								{
+									x = 0
+								}
+									func main()
+									{
+										x := 5
+										zero(x)
+										fmt.Println(x) // Produces 0 NOT 5
+									}
+
+							To produce 0:
+							
+								func pointerzero(x Ptr *int)		
+								{
+									xPtr = 0
+								}
+									func main()
+									{
+
+										x:=5
+										zero(&x)
+										fmt.Println(x) // x is 0
+
+									}
+
+
+
+									* and & operators:
+
+
+									A way to obtain a pointer is through the use of the word "new"
+
+										func one(xPtr *int)
+										{
+											*xPtr := 1
+										}
+											func main()
+											{
+												xPtr := new(int)
+												one(xPtr)
+												fmt.Println(xPtr) // Prints 1
+
+											}
+
+										
+
+									Structures & Interfaces:
+											
+											type Circle struct
+											{
+												x float64
+												y float64
+												r float64
+											}
+												type rectagle float64
+												{
+													length float64
+													width float64
+												}
+
+
+												Create a struct object:
+												var c Circle
+
+												c = new(Circle)
+
+												c:= Circle(x : 0, y : 0, r : 5)
+												|| 
+												c := Circle(0,0,5)
+												||
+												Fields
+												{
+													c.x = 0
+													c.y = 0
+													c.r = 5
+													fmt.Println(c.x, c.y, c.r)
+												}
+												
+
+												func CircleArea(c Circle) float64
+												{
+
+													rteurn math.PI * c.r * c.r
+												}
+
+
+									Methods:
+
+										The "Reciever"
+											func (c Circle) area() float64
+											{
+												return math.PI * c.r *c.r
+											}
+												fmt.Println(c.area)
+
+										The reciever is a keyword, similar to a parameter, name and a type. But creating a function this way enables us to call the function using the . operator
+										
+											e.g
+											type Rectangle struct 
+											{
+											  x1, y1, x2, y2 float64
+											}
+											func (r *Rectangle) area() float64 
+											{
+											  l := distance(r.x1, r.y1, r.x1, r.y2)
+											  w := distance(r.x1, r.y1, r.x2, r.y1)
+											  return l * w
+											}
+
+
+											Embeded Types:
+											type Person struct
+											{
+												Name string
+											}
+
+											type Android struct 
+											{
+											  Person Person
+											  Model string
+											}
+
+
+												a:= new(Android)
+												a.Talk()
+
+
+									Interface:
+									Define methods in the interface
+
+											type Shape interface
+											{
+												area()float64
+											}
+
+												func totalArea(shapes .... Shape) float64
+												{
+													var area float64
+													for _; s := range shapes
+													{
+														area += s.area()
+													}
+													rteurn area
+												}
+
+													Printing the area:
+
+															fmt.Println(totalArea(&c,&r))
+
+															type MultiShape struct
+															{
+																shapes []shape
+															}
+
+																func (m *MultiShape) area() float64 {
+
+																	  var area float64
+																	  for _, s := range m.shapes {
+																	    area += s.area()
+																	  }
+																	  return area
+																	}
+
+
+								Concurrency
+								
+								Goroutines:
+
+									- A function that is capable of running concurrently with other functions
+									- Use the keyword "go"									
+
+									e.g:
+									package main
+
+									import "fmt"
+
+									func f(n int) {
+									  for i := 0; i < 10; i++ {
+									    fmt.Println(n, ":", i)
+									  }
+									}
+
+									func main() {
+									  go f(0)
+									  var input string
+									  fmt.Scanln(&input)
+									}
+
+
+									Adding delays in the program:
+
+									import("fmt", "time", "math/rand")
+
+									func f(n int)
+									{
+										for i:=0; i < 10; i++
+										{
+											fmt.Println(n, ": " , i)
+											amt := time.Duration(rand.Intn(250))
+											time.Sleep(time.Millisecond * amt)
+										}
+									}
+
+										func main()
+										{
+											for i := 0; i< 10; i++
+											{
+												go f(i)
+											}
+												var input stirng
+												fmt.Scanln(&input)
+
+										}
+
+						********************************************************************************************************************
+
