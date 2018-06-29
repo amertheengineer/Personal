@@ -1,0 +1,103 @@
+				/***** Linux: ******/
+
+
+				***********************************************************************
+				Basic Linux commands:
+
+				In Terminal:
+
+				pwd ==> Gives complete path and directory (Current)
+				ls ==> Shos files and path of directory your'e in
+				cd ==> Goes to X directory (e.g cd Downloads)
+				mkdir ==> Make Directory (Creates a directory)
+				man ==> The manual command Shows info about the command your'e using
+
+				rmdir ==> Remove a dir
+				rm ==> Deletes files & Directories 
+				touch ==> Creates new file (e.g touch new.txt)
+				Cp ==> Copy the fiile and det destination (e.g cp new.txt /home/nayso/music)
+				mv ==> Move or rename a file
+				locate ==> Locates file/folder || Use "*" to seperate two words
+				echo ==> Prints something to a file or to the terminal
+				Cat ==> Displays the contents of a text file
+				Nanno  ==> Text editor
+				Sudo ==> Admin rights
+				dp ==> See available disk space in each partition
+				du ==> Shows disk usage of a file on the system
+				tar ==> Used for compressing files
+				hostname ==> Similar to ipconfig in windows
+				Network:
+						ssh, scp, telnet, wget
+				Shells:
+						Bash, TCSH, alias, watch, clear, history, chsh, set
+				
+				Files:
+
+						Nix ==> File system hierarchy directory structure						
+						Upside down tree
+						Absolute:
+						Abs cd/usr/local/lib
+						Relative:
+						Rel cd/lib
+						ls-d */
+				echo 'Hello World'		 > test/myfile.txt
+				echo 'Bye all' >> test/myfile.txt
+
+
+				List commands:
+				ls-a ==> List all files including hidden file beginning w a period.
+				lss -ld* ==> List details about a directory and not its content
+				ls -F ==> Put an indicator char at the end of each name
+
+
+
+				Using awk:
+				ls -l /usr 
+				ls -l /usr | awk '{ print $9 "\t" $5}'
+
+
+
+				ctrl + alt + T ==> Terminal
+				System admin rights ==> sudo [....... CODE]
+
+
+				alias ==> Enables user ot create a name for a command regardless of how complex it is
+				apt-get ==> Tool to automatically update a debian machine to install packages
+
+				bzip2 ==> Open source that's used to compress and decompress files at high rate
+				chown ==> Changes file ownership and the option to change the ownership of all objects within the dir
+				cmp ==> Compares two files of any type, if different, the return is a byte or line number where the first difference occurs
+				comm ==> Compares the lines common to file 1 and file 2
+				enable ==> Starts or Stops printers
+				Env ==> Runs a program in a modified enviroment 
+				Exec ==> Replaces parent process w whateveer command is typed
+				for loop ==> for /l %x in (1, 1, 100) do echo %x
+				while loop ==> :while1
+						if %countfiles% leq 21 (
+						    :: change countfile here
+						    goto :while1
+						)
+
+				free ==> displays all the free space in physical memory
+				ifconfig ==> Used to configure kernel-resident network
+				ifup ==> Configures a network interface/enables a network connection
+				ifdown ==> Shuts down network interface 
+				locate ==> Reads one or more dbs and writes file names matching certian patterns to the output 
+
+				lft ==> Similar to traceroute
+				mc ==> Visual Shell; text-based file manager
+				neat ==> Enables GUI admin to specify info needed to set information needed to setup a network card.
+				netconfig ==> Configures anetwork, enables network products and displays a series of screens that ask for configuration info
+				netstat ==> Provides info and stats about protocols in use of current TCP/IP config
+				
+
+
+				du ==> Directory S[ace usage
+				df-h ==> Shows disk usage
+				whois domain ==> Returns the domain of the PC
+				
+
+				System Admin:					
+				adduser accountNAme ==> Adds accountname to the list of users
+				passwd accountname ==> Password of the account
+				su ==> Login as a superuser from current login
