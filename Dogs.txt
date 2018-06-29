@@ -1,0 +1,3 @@
+Spot,lol, 6
+Rover,Spaniel,3
+Snoopy,Beagle,5
