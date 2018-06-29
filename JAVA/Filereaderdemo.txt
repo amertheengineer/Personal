@@ -1,0 +1,86 @@
+/*
+ * Amer Abdelaziz
+ * U25449742
+ * This program takes a file from the user and outputs the average of the numbers in the file
+ * 
+ */
+
+import java.util.Scanner;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+
+
+public class Filereaderdemo {
+
+	public static void main(String[] args) 
+	throws FileNotFoundException
+	
+	{
+	System.out.println("This is program FileDemo");
+	System.out.print("Please enter file name: ");
+// Attaining the file name from the user
+	Scanner ab = new Scanner(System.in);
+	String numbers = ab.nextLine();
+	
+	// Trying the whole scenario and if it fails, it'll run into the catch command
+	
+	try
+		{
+		
+		// The file that's being inputted by the user is now "avg" file
+	File avg = new File(numbers);
+	// Reading from the file (Scanning the file) and calling the scanner ac
+	
+	Scanner ac = new Scanner(avg);
+	// Computing the average of the numbers.
+	System.out.println();
+	double average = 0;
+	int count = 0;
+	
+	int y = 0;
+	double sum = 0;
+	
+	/*
+	 *  The while statement here reads the next integer from the 
+	 *  file and replaces int y with it
+	 **/
+	
+	while(ac.hasNext())
+	
+			{
+				y = ac.nextInt();
+
+				count++;
+			
+				sum= sum + y;
+				average = sum / count;
+	
+		
+			}
+	
+	
+	
+	
+	// Printing it out
+		 
+		 System.out.println("The average is " +average);
+		
+		} 
+			/*
+			 *  If the system catches a "FileNotFoundException ex" error, 
+			 *  it'll just print "File not found mate!" 
+			 */
+	
+		catch(FileNotFoundException ex)
+			{
+		
+				System.out.println("File not found mate! ");
+		
+			}
+	
+	}
+	
+
+}
